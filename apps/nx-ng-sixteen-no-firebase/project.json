@@ -1,0 +1,148 @@
+{
+  "name": "nx-ng-sixteen-no-firebase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "nx-ng-sixteen-test",
+  "sourceRoot": "apps/nx-ng-sixteen-no-firebase/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nx-ng-sixteen-no-firebase/browser",
+        "index": "apps/nx-ng-sixteen-no-firebase/src/index.html",
+        "main": "apps/nx-ng-sixteen-no-firebase/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/nx-ng-sixteen-no-firebase/tsconfig.app.json",
+        "assets": [
+          "apps/nx-ng-sixteen-no-firebase/src/favicon.ico",
+          "apps/nx-ng-sixteen-no-firebase/src/assets"
+        ],
+        "styles": ["apps/nx-ng-sixteen-no-firebase/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:production"
+        },
+        "development": {
+          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "apps/nx-ng-sixteen-no-firebase:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/nx-ng-sixteen-no-firebase/**/*.ts",
+          "apps/nx-ng-sixteen-no-firebase/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/nx-ng-sixteen-no-firebase/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "server": {
+      "dependsOn": ["build"],
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/nx-ng-sixteen-no-firebase/server",
+        "main": "apps/nx-ng-sixteen-no-firebase/server.ts",
+        "tsConfig": "apps/nx-ng-sixteen-no-firebase/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "nx-ng-sixteen-no-firebase:build:development",
+          "serverTarget": "nx-ng-sixteen-no-firebase:server:development"
+        },
+        "production": {
+          "browserTarget": "nx-ng-sixteen-no-firebase:build:production",
+          "serverTarget": "nx-ng-sixteen-no-firebase:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:development",
+          "serverTarget": "apps/nx-ng-sixteen-no-firebase:server:development"
+        },
+        "production": {
+          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:production",
+          "serverTarget": "apps/nx-ng-sixteen-no-firebase:server:production"
+        }
+      },
+      "defaultConfiguration": "production"
+    }
+  }
+}
