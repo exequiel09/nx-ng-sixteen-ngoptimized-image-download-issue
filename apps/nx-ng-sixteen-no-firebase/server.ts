@@ -13,7 +13,7 @@ export function app(): express.Express {
   const server = express();
   const distFolder = join(
     process.cwd(),
-    'dist/nx-ng-sixteen-no-firebase/browser'
+    'dist/apps/nx-ng-sixteen-no-firebase/browser'
   );
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'

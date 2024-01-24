@@ -53,10 +53,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:production"
+          "browserTarget": "nx-ng-sixteen-no-firebase:build:production"
         },
         "development": {
-          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:development"
+          "browserTarget": "nx-ng-sixteen-no-firebase:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -134,12 +134,12 @@
       },
       "configurations": {
         "development": {
-          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:development",
-          "serverTarget": "apps/nx-ng-sixteen-no-firebase:server:development"
+          "browserTarget": "nx-ng-sixteen-no-firebase:build:development",
+          "serverTarget": "nx-ng-sixteen-no-firebase:server:development"
         },
         "production": {
-          "browserTarget": "apps/nx-ng-sixteen-no-firebase:build:production",
-          "serverTarget": "apps/nx-ng-sixteen-no-firebase:server:production"
+          "browserTarget": "nx-ng-sixteen-no-firebase:build:production",
+          "serverTarget": "nx-ng-sixteen-no-firebase:server:production"
         }
       },
       "defaultConfiguration": "production"
